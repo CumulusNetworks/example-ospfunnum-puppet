@@ -1,0 +1,8 @@
+{
+   "name": "example-ospfunnum-puppet",
+   "dependencies" : [
+      { "name": "cumuluslinux/cumulus_interfaces" },
+      { "name": "cumuluslinux/cumulus_ports"}
+    ]
+}
+
