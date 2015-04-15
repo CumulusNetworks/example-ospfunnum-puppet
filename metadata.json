@@ -1,8 +1,8 @@
 {
    "name": "example-ospfunnum-puppet",
    "dependencies" : [
-      { "name": "cumuluslinux/cumulus_interfaces" },
-      { "name": "cumuluslinux/cumulus_ports"}
+      { "name": "puppetlabs/stdlib" },
+      { "name": "duritong/sysctl" },
+      { "name": "torrancew/account" }
     ]
 }
-
