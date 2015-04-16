@@ -1,5 +1,4 @@
-# OSPF Unnumbered for Puppet
-
+# Example OSPF unnumbered for Puppet
 
 ## Overview
 
@@ -21,6 +20,8 @@ In the [workbench](http://cumulusnetworks.com/cumulus-workbench/) you can instal
 * Install any dependencies using [librarian-puppet](https://github.com/rodjek/librarian-puppet) (from metadata.json)
 * Symlinks the Puppetmaster directories (files, manifests, modules and templates) into /etc/puppet/
 * Looks at the topology of the workbench and symlinks the correct site.pp file
+
+***
 
 ![Cumulus icon](http://cumulusnetworks.com/static/cumulus/img/logo_2014.png)
 
