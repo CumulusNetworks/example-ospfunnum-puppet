@@ -10,7 +10,7 @@ xxx
 
 ### In your own network
 
-Clone or copy these scripts to your management webserver.
+Install these modules on your Puppet server.
 
 ### Within the Cumulus Workbench
 
