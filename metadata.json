@@ -2,7 +2,6 @@
    "name": "example-ospfunnum-puppet",
    "dependencies" : [
       { "name": "puppetlabs/stdlib" },
-      { "name": "duritong/sysctl" },
       { "name": "torrancew/account" }
     ]
 }
