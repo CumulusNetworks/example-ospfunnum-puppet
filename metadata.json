@@ -3,8 +3,8 @@
    "dependencies" : [
       { "name": "puppetlabs/stdlib" },
       { "name": "torrancew/account" },
-      { "name": "cumulus/cumulus_ports" },
-      { "name": "cumulus/cumulus_license" },
-      { "name": "cumulus/cumulus_interfaces" },
+      { "name": "cumuluslinux/cumulus_ports" },
+      { "name": "cumuluslinux/cumulus_license" },
+      { "name": "cumuluslinux/cumulus_interfaces" }
     ]
 }
