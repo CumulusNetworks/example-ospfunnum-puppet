@@ -4,17 +4,58 @@ class base::interfaces {
         $int_enabled = false
     }
 
+    define base_l3_interface {
+      $address = $name["address"]
+      $netmask = $intf["netmask"]
+
+      cumulus_interface { $name:
+        ipv4   => "$address/$netmask",
+        notify => Service['networking'],
+      }
+    }
+
+    define base_bridge {
+      $id      = $name["id"]
+      $address = $name["address"]
+      $netmask = $name["netmask"]
+      $members = $name["members"]
+
+      cumulus_bridge{ $name:
+        ipv4   => "$address/$netmask",
+        ports  => $members,
+        notify => Service['networking'],
+      }
+    }
+
     if ($int_enabled == true) {
-      file { '/etc/network/interfaces':
-              owner   => root,
-              group   => root,
-              mode    => '0644',
-              content => template('base/interfaces.erb')
+      cumulus_interface { 'lo':
+        addr_method => 'loopback',
+      }
+
+      cumulus_interface { 'eth0':
+        addr_method => 'dhcp',
+      }
+
+      # unnumbered interfaces
+      if ($int_unnumbered != undef) {
+        cumulus_interface { $int_unnumbered:
+          ipv4   => "$int_loopback/32",  #255.255.255.255
+          notify => Service['networking'],
+        }
+      }
+
+      # l3 interfaces
+      if ($int_layer3 != undef) {
+        base_l3_interface{ $int_layer3: }
+      }
+
+      # bridges
+      if ($int_bridges != undef) {
+        base_bridge{ $int_bridges: }
       }
 
       service { 'networking':
               ensure     => running,
-              subscribe  => File['/etc/network/interfaces'],
               hasrestart => true,
               restart    => '/sbin/ifreload -a',
               enable     => true,
@@ -22,5 +63,4 @@ class base::interfaces {
               require    => Cumulus_license['workbench']
       }
     }
-
 }
