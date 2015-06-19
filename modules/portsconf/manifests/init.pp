@@ -1,12 +1,8 @@
 class portsconf ($switchtype='') {
   if $switchtype == '40G' {
-    file { '/etc/cumulus/ports.conf':
-      ensure => present,
-      owner  => 'root',
-      group  => 'root',
-      mode   => '0644',
-      source => 'puppet:///modules/portsconf/40G.conf',
-      notify => Service['switchd'],
+    cumulus_ports { 'speeds':
+      speed_4_by_10g => ['swp1', 'swp32'],
+      speed_40g      => ['swp2-31'],
+      notify         => Service['switchd'],
     }
-  }
 }
