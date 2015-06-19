@@ -19,7 +19,7 @@ class base::interfaces {
               restart    => '/sbin/ifreload -a',
               enable     => true,
               hasstatus  => false,
-              require    => File['/etc/cumulus/license.txt']
+              require    => Cumulus_license['workbench']
       }
     }
 
