@@ -5,4 +5,5 @@ class portsconf ($switchtype='') {
       speed_40g      => ['swp2-31'],
       notify         => Service['switchd'],
     }
+  }
 }
