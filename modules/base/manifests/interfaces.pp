@@ -1,5 +1,10 @@
 class base::interfaces {
 
+  # Wrapper classes for Layer 3 interfaces and Bridges
+  #
+  # Classes must be defined "at the top level" which is why they're here,
+  # rather than inside the if() block below, where they are called from.
+
   define base_l3_interface {
     $address = $name["address"]
     $netmask = $intf["netmask"]
