@@ -21,7 +21,7 @@ class base::interfaces {
     $netmask = $name["netmask"]
     $members = $name["members"]
 
-    cumulus_bridge{ $name:
+    cumulus_bridge{ $id:
       ipv4   => "$address/$netmask",
       ports  => $members,
       notify => Service['networking'],
@@ -59,13 +59,18 @@ class base::interfaces {
       base_bridge{ $int_bridges: }
     }
 
+    # Replace the interfaces file with one that includes the fragments
+    file { '/etc/network/interfaces':
+      content => '# This file is managed by Puppet\nsource /etc/network/interfaces.d/*'
+    }
+
     service { 'networking':
       ensure     => running,
       hasrestart => true,
       restart    => '/sbin/ifreload -a',
       enable     => true,
       hasstatus  => false,
-      require    => Cumulus_license['workbench']
+      require    => Cumulus_license['workbench'], File['/etc/network/interfaces']
     }
   }
 }
