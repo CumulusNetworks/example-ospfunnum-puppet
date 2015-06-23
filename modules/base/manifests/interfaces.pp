@@ -35,6 +35,7 @@ class base::interfaces {
   if ($int_enabled == true) {
     cumulus_interface { 'lo':
       addr_method => 'loopback',
+      ipv4 = "$int_loopback/32",
     }
 
     cumulus_interface { 'eth0':
@@ -61,7 +62,7 @@ class base::interfaces {
 
     # Replace the interfaces file with one that includes the fragments
     file { '/etc/network/interfaces':
-      content => '# This file is managed by Puppet\nsource /etc/network/interfaces.d/*'
+      content => "# This file is managed by Puppet\nsource /etc/network/interfaces.d/*\n"
     }
 
     service { 'networking':
