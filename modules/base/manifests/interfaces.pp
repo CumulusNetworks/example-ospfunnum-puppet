@@ -35,7 +35,7 @@ class base::interfaces {
   if ($int_enabled == true) {
     cumulus_interface { 'lo':
       addr_method => 'loopback',
-      ipv4 = "$int_loopback/32",
+      ipv4 => "$int_loopback/32",
     }
 
     cumulus_interface { 'eth0':
