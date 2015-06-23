@@ -70,7 +70,7 @@ class base::interfaces {
       restart    => '/sbin/ifreload -a',
       enable     => true,
       hasstatus  => false,
-      require    => Cumulus_license['workbench'], File['/etc/network/interfaces']
+      require    => [ Cumulus_license['workbench'], File['/etc/network/interfaces'] ]
     }
   }
 }
