@@ -3,6 +3,7 @@ class ospfunnum::quagga {
         ensure    => running,
         hasstatus => false,
         enable    => true,
+        subscribe => Service['networking'],
     }
 
     file { '/etc/quagga/daemons':
