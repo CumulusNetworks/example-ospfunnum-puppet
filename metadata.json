@@ -2,6 +2,9 @@
    "name": "example-ospfunnum-puppet",
    "dependencies" : [
       { "name": "puppetlabs/stdlib" },
-      { "name": "torrancew/account" }
+      { "name": "torrancew/account" },
+      { "name": "cumuluslinux/cumulus_ports" },
+      { "name": "cumuluslinux/cumulus_license" },
+      { "name": "cumuluslinux/cumulus_interfaces" }
     ]
 }
