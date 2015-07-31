@@ -8,7 +8,7 @@ class base::license {
   }
 
   cumulus_license { 'workbench':
-    src => "puppet:///modules/base/${::hostname}.lic",
+    src => "http://wbench.lab.local/${::hostname}.lic",
     notify => Service['switchd']
   }
 
