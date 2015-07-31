@@ -13,7 +13,7 @@ class base::license {
     owner  => 'root',
     group  => 'root',
     source => "puppet:///modules/base/${::hostname}.lic"
-  }
+  }->
 
   cumulus_license { 'workbench':
     src    => "/tmp/${::hostname}.lic",
