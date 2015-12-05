@@ -57,7 +57,7 @@ class base::interfaces {
 
     # bridges
     if ($int_bridges != undef) {
-      base_bridge{ $int_bridges: }
+      create_resources( base::interfaces::base_bridge, $int_bridges )
     }
 
     # Replace the interfaces file with one that includes the fragments
