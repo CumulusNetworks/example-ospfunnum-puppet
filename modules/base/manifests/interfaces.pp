@@ -15,12 +15,7 @@ class base::interfaces {
     }
   }
 
-  define base_bridge {
-    $id      = $name["id"]
-    $address = $name["address"]
-    $netmask = $name["netmask"]
-    $members = $name["members"]
-
+  define base_bridge ($id, $address, $netmask, $members) {
     cumulus_bridge{ $id:
       ipv4   => "$address/$netmask",
       ports  => $members,
