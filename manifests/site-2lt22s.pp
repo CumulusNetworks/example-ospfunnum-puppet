@@ -2,7 +2,7 @@ node 'spine1.lab.local' {
     $int_enabled = true
     $int_loopback = '10.2.1.3'
     $int_unnumbered = [ 'swp49', 'swp50', 'swp51', 'swp52' ]
-    $int_bridges = [ ]
+    $int_bridges = {}
     include ospfunnum::role::switchbase
 }
 
@@ -10,7 +10,7 @@ node 'spine2.lab.local' {
     $int_enabled = true
     $int_loopback = '10.2.1.4'
     $int_unnumbered = [ 'swp49', 'swp50', 'swp51', 'swp52' ]
-    $int_bridges = [ ]
+    $int_bridges = {}
     include ospfunnum::role::switchbase
 }
 
