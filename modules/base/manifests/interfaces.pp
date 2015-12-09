@@ -15,12 +15,7 @@ class base::interfaces {
     }
   }
 
-  define base_bridge {
-    $id      = $name["id"]
-    $address = $name["address"]
-    $netmask = $name["netmask"]
-    $members = $name["members"]
-
+  define base_bridge ($id, $address, $netmask, $members) {
     cumulus_bridge{ $id:
       ipv4   => "$address/$netmask",
       ports  => $members,
@@ -57,7 +52,7 @@ class base::interfaces {
 
     # bridges
     if ($int_bridges != undef) {
-      base_bridge{ $int_bridges: }
+      create_resources( base::interfaces::base_bridge, $int_bridges )
     }
 
     # Replace the interfaces file with one that includes the fragments

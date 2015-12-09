@@ -24,9 +24,9 @@ interface <%= val %>
 !
 <% end -%>
 router ospf
- ospf router-id <%= int_loopback %>
+ ospf router-id <%= @int_loopback %>
  redistribute connected
- network <%= int_loopback %>/32 area 0.0.0.0
+ network <%= @int_loopback %>/32 area 0.0.0.0
 !
 ip forwarding
 ipv6 forwarding
